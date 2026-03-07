@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deborah Ramos | Social Multimídia</title>
+
+    <!-- Google Fonts: Fraunces, Syne, Montserrat, Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração da Marca no Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#EC0934',    // Vermelho Morango
+                        secondary: '#1DFFA3',  // Verde Menta
+                        tertiary: '#003249',   // Ciano Profundo
+                        bg: '#F9F7F2',         // Creme Suave
+                    },
+                    fontFamily: {
+                        fraunces: ['Fraunces', 'serif'],
+                        syne: ['Syne', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob1': 'blob1 20s infinite alternate ease-in-out',
+                        'blob2': 'blob2 25s infinite alternate ease-in-out',
+                        'blob3': 'blob3 22s infinite alternate ease-in-out',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob1: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '50%': { transform: 'translate(50px, 40px) scale(1.1)' },
+                            '100%': { transform: 'translate(-30px, -50px) scale(0.9)' },
+                        },
+                        blob2: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '50%': { transform: 'translate(-60px, 60px) scale(1.2)' },
+                            '100%': { transform: 'translate(40px, -40px) scale(0.95)' },
+                        },
+                        blob3: {
+                            '0%': { transform: 'translate(0px, 0px) scale(0.9)' },
+                            '50%': { transform: 'translate(40px, -60px) scale(1.15)' },
+                            '100%': { transform: 'translate(-50px, 30px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Esconder Scrollbar (Estética Clean) */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Classes de Animação de Entrada */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* OVERLAY DE NOISE COM A IMAGEM SOLICITADA */
+        .noise-overlay {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.15; /* Ajuste a opacidade do noise se necessário */
+            mix-blend-mode: multiply;
+            background-image: url('Noise.jpg');
+            background-repeat: repeat;
+            background-size: 200px 200px; /* Tamanho do grão */
+        }
+    </style>
+</head>
+<body class="bg-bg text-tertiary font-jakarta overflow-x-hidden selection:bg-secondary selection:text-tertiary">
+
+    <!-- 🌫️ EFEITO NOISE CINEMATOGRÁFICO VIA ARQUIVO NOISE.JPG -->
+    <div class="noise-overlay"></div>
+
+    <!-- 🍦 FLUIDEZ CRITERIOSA: ELEMENTOS LÍQUIDOS DE FUNDO -->
+    <!-- Encontro dinâmico apenas entre Verde Menta e Ciano Profundo, o Vermelho jamais é fluido -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 mix-blend-multiply">
+        <!-- Verde Menta -->
+        <div class="absolute -top-[10%] -left-[10%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-secondary/40 rounded-full blur-[100px] md:blur-[140px] animate-blob1"></div>
+        <!-- Ciano Profundo (Sombras/Tensão) -->
+        <div class="absolute top-[20%] right-[0%] w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] bg-tertiary/20 rounded-full blur-[90px] md:blur-[120px] animate-blob2"></div>
+        <!-- Verde Menta extra para mesclar com a sombra do Ciano -->
+        <div class="absolute bottom-[10%] left-[20%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-secondary/30 rounded-full blur-[110px] md:blur-[130px] animate-blob3"></div>
+    </div>
+
+    <!-- SEÇÃO 1: HERO & BIO -->
+    <!-- Espaço negativo em Creme, com tipografia cortante em Vermelho e Ciano -->
+    <section class="relative z-10 min-h-[90vh] flex flex-col justify-center items-center px-6 pt-20 pb-16 text-center max-w-5xl mx-auto">
+        <div class="reveal">
+            <!-- Título Ousado e Cortante -->
+            <h1 class="text-[5rem] md:text-[9rem] font-black tracking-tighter leading-[0.85] mb-6 drop-shadow-sm">
+                <span class="text-primary font-fraunces block">Deborah</span>
+                <span class="text-tertiary italic font-fraunces block pr-4 md:pr-12">Ramos</span>
+            </h1>
+            <!-- Subtítulo técnico e moderno -->
+            <h2 class="font-montserrat text-tertiary text-sm md:text-xl tracking-[0.4em] uppercase font-bold mb-10 border-b-2 border-primary inline-block pb-2">
+                Social Multimídia
+            </h2>
+            <!-- Corpo de texto fluido -->
+            <p class="font-jakarta text-lg md:text-2xl max-w-2xl mx-auto opacity-90 leading-relaxed font-medium">
+                Onde a criatividade flui livre, o critério técnico assume o controle. Estrategista digital e video maker focada em estética, conversão e movimento.
+            </p>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: TRABALHOS (VIDEO MAKER & SOCIAL MEDIA) -->
+    <!-- Fundo em Ciano Profundo atuando como respiro escuro e sério -->
+    <section class="relative z-10 py-24 bg-tertiary text-white rounded-t-[50px] md:rounded-t-[80px] shadow-[0_-20px_50px_rgba(0,0,0,0.15)]">
+        
+        <!-- PARTE A: VIDEO MAKER -->
+        <div class="mb-24 reveal">
+            <div class="px-6 md:px-12 max-w-7xl mx-auto">
+                <span class="font-montserrat text-secondary text-xs uppercase tracking-[0.3em] font-bold">Direção & Edição</span>
+                <h3 class="font-syne text-4xl md:text-6xl font-bold mt-2 mb-10 flex items-center gap-4">
+                    Video Maker <span class="w-16 h-[2px] bg-secondary"></span>
+                </h3>
+            </div>
+            
+            <div class="flex gap-6 overflow-x-auto px-6 md:px-12 pb-12 snap-x snap-mandatory no-scrollbar">
+                <!-- Video 1 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[350px] aspect-[9/16] bg-black rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative group">
+                    <div class="absolute inset-0 border-4 border-transparent group-hover:border-secondary/50 rounded-[40px] transition-colors duration-500 z-10 pointer-events-none"></div>
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+                        <source src="lavXpress1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Video 2 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[350px] aspect-[9/16] bg-black rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative group">
+                    <div class="absolute inset-0 border-4 border-transparent group-hover:border-secondary/50 rounded-[40px] transition-colors duration-500 z-10 pointer-events-none"></div>
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+                        <source src="TropicalHotel.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Video 3 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[350px] aspect-[9/16] bg-black rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative group">
+                    <div class="absolute inset-0 border-4 border-transparent group-hover:border-secondary/50 rounded-[40px] transition-colors duration-500 z-10 pointer-events-none"></div>
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+                        <source src="Goldko1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Video 4 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[350px] aspect-[9/16] bg-black rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative group">
+                    <div class="absolute inset-0 border-4 border-transparent group-hover:border-secondary/50 rounded-[40px] transition-colors duration-500 z-10 pointer-events-none"></div>
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+                        <source src="Goldko2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <!-- Video 5 -->
+                <div class="snap-center shrink-0 w-[85vw] md:w-[350px] aspect-[9/16] bg-black rounded-[40px] overflow-hidden border border-white/10 shadow-2xl relative group">
+                    <div class="absolute inset-0 border-4 border-transparent group-hover:border-secondary/50 rounded-[40px] transition-colors duration-500 z-10 pointer-events-none"></div>
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+                        <source src="LavXpress2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="snap-center shrink-0 w-[10vw] md:w-[100px]"></div>
+            </div>
+        </div>
+
+        <!-- PARTE B: SOCIAL MEDIA -->
+        <div class="px-6 md:px-12 max-w-7xl mx-auto reveal">
+            <span class="font-montserrat text-primary text-xs uppercase tracking-[0.3em] font-bold">Estratégia & Visual</span>
+            <h3 class="font-syne text-4xl md:text-6xl font-bold mt-2 mb-12 flex items-center gap-4">
+                Social Media <span class="w-16 h-[2px] bg-primary"></span>
+            </h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <!-- Dia 1 -->
+                <div class="bg-secondary p-2 md:p-3 rounded-[35px] md:rounded-[45px] shadow-2xl group overflow-hidden flex flex-col justify-end relative h-full aspect-[9/16]">
+                    <div class="absolute inset-0 bg-black/10"></div>
+                    <div class="w-full h-full bg-tertiary rounded-[28px] md:rounded-[35px] overflow-hidden z-10 relative">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="VittaNorte_GummyHair.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!-- Dia 2 -->
+                <div class="bg-bg p-2 md:p-3 rounded-[35px] md:rounded-[45px] shadow-2xl group overflow-hidden flex flex-col justify-end relative h-full aspect-[9/16] mt-8">
+                    <div class="absolute inset-0 bg-black/5"></div>
+                    <div class="w-full h-full bg-tertiary rounded-[28px] md:rounded-[35px] overflow-hidden z-10 relative">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="VittaNorte_GummyHair_Outrosa.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: PACOTES -->
+    <!-- O Ponto de Tensão: Fundo fluido Menta vs Tipografia técnica Ciano vs Destaque estático Vermelho -->
+    <section class="relative z-10 px-6 py-32 max-w-5xl mx-auto">
+        <div class="reveal bg-secondary text-tertiary rounded-[50px] md:rounded-[70px] p-8 md:p-16 relative shadow-[0_30px_60px_-15px_rgba(29,255,163,0.3)] overflow-hidden">
+            
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/20 rounded-full blur-2xl pointer-events-none"></div>
+
+            <span class="font-montserrat text-tertiary/60 font-bold tracking-widest uppercase text-xs">A Proposta</span>
+            <h4 class="font-fraunces text-4xl md:text-6xl font-black mt-4 mb-10 md:mb-14 leading-tight max-w-lg">
+                Plano Essencial <br/><span class="text-white drop-shadow-sm">Instagram</span>
+            </h4>
+
+            <ul class="space-y-5 md:space-y-6 mb-14 font-jakarta font-bold text-lg md:text-xl">
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-tertiary text-secondary rounded-full text-sm">✓</span>
+                    Planejamento estratégico mensal
+                </li>
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-tertiary text-secondary rounded-full text-sm">✓</span>
+                    Gestão de Conteúdo
+                </li>
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-tertiary text-secondary rounded-full text-sm">✓</span>
+                    8 vídeos (Edição Criteriosa)
+                </li>
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-tertiary text-secondary rounded-full text-sm">✓</span>
+                    15 Estáticos (10 story / 5 Feed)
+                </li>
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-tertiary text-secondary rounded-full text-sm">✓</span>
+                    2 captações presenciais por mês
+                </li>
+            </ul>
+
+            <div class="p-5 md:p-6 bg-tertiary/10 rounded-3xl border border-tertiary/20 font-montserrat font-semibold italic text-sm md:text-base mb-12">
+                <span class="text-primary not-italic font-black text-lg mr-2">!</span> 
+                Observação: Execução direta técnica (Sem modelo/UGC).
+            </div>
+
+            <div class="pt-10 border-t border-tertiary/20">
+                <div class="flex items-center gap-4 mb-2">
+                    <p class="text-xl opacity-60 line-through font-montserrat font-semibold">De R$ 2.800,00</p>
+                    <div class="bg-primary text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-md animate-pulse-slow">
+                        7% OFF
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-baseline gap-3">
+                    <span class="text-6xl md:text-[5rem] font-black font-fraunces">R$ 2.604,00</span>
+                </div>
+                <p class="font-montserrat uppercase tracking-[0.2em] mt-6 text-xs md:text-sm font-bold opacity-50 italic">
+                    Proposta válida por 05 dias úteis
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: FOOTER & CTA -->
+    <section class="relative z-10 px-6 py-24 flex flex-col items-center text-center bg-tertiary rounded-t-[50px] md:rounded-t-[80px] text-white overflow-hidden">
+        
+        <!-- Mistura de Ciano Profundo com Verde Menta para profundidade extra -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <div class="reveal flex flex-col items-center">
+            
+            <img src="morango.png" alt="Logo Morango" class="w-24 md:w-32 mb-10 hover:scale-110 hover:rotate-6 transition-all duration-500 drop-shadow-[0_0_30px_rgba(236,9,52,0.5)]" onerror="this.style.display='none'">
+            
+            <h2 class="font-syne text-4xl md:text-6xl font-black mb-12 leading-tight uppercase">
+                Pronto para dominar <br/>
+                <span class="text-secondary">Sua Presença Digital?</span>
+            </h2>
+
+            <!-- BOTAO EM VERMELHO MORANGO: Cortante, de Conversão -->
+            <a href="https://wa.me/5585997446274" target="_blank" class="group relative inline-flex items-center justify-center px-10 md:px-14 py-5 md:py-6 font-syne font-bold text-lg md:text-xl text-white transition-all duration-300 bg-primary rounded-full hover:bg-white hover:text-primary shadow-[0_10px_40px_-10px_#EC0934]">
+                <span class="mr-4">FECHAR AGORA</span>
+                <svg class="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- SCRIPT DE ANIMAÇÃO DE ROLAGEM -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
